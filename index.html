@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-        content="Responsive countdown timer built with HTML5, CSS3 and JavaScript.">
+        content="A professional responsive countdown timer built with HTML5, CSS3 and JavaScript.">
 
     <title>Countdown Timer | Veda Technology</title>
 
@@ -20,54 +20,145 @@
         <section class="countdown-section">
 
             <header class="hero">
-                <p class="eyebrow">VEDA TECHNOLOGY • TASK 13</p>
 
-                <h1>Countdown Timer</h1>
+                <div class="brand">
+                    <span class="brand-dot"></span>
+                    VEDA TECHNOLOGY
+                </div>
+
+                <p class="eyebrow">WEB DEVELOPMENT • TASK 13</p>
+
+                <h1>
+                    Every Second
+                    <span>Counts.</span>
+                </h1>
 
                 <p class="subtitle">
-                    Stay focused. Every second brings you closer to your goal.
+                    A modern countdown experience designed to keep
+                    your goals, deadlines and important moments on track.
                 </p>
+
             </header>
 
             <div class="timer-card">
 
-                <div class="target-info">
-                    <span class="target-label">COUNTDOWN TO</span>
-                    <h2 id="target-date">Loading target date...</h2>
+                <div class="card-top">
+
+                    <div>
+                        <span class="section-label">COUNTDOWN TO</span>
+
+                        <h2 id="target-date">
+                            Loading target date...
+                        </h2>
+                    </div>
+
+                    <div class="status">
+                        <span class="status-dot"></span>
+                        <span id="status-text">ACTIVE</span>
+                    </div>
+
                 </div>
+
+                <div class="divider"></div>
 
                 <div class="timer-grid">
 
                     <div class="time-box">
-                        <span id="days">00</span>
-                        <small>Days</small>
+                        <div class="number-wrapper">
+                            <span id="days">00</span>
+                        </div>
+                        <span class="time-label">DAYS</span>
                     </div>
 
                     <div class="time-box">
-                        <span id="hours">00</span>
-                        <small>Hours</small>
+                        <div class="number-wrapper">
+                            <span id="hours">00</span>
+                        </div>
+                        <span class="time-label">HOURS</span>
                     </div>
 
                     <div class="time-box">
-                        <span id="minutes">00</span>
-                        <small>Minutes</small>
+                        <div class="number-wrapper">
+                            <span id="minutes">00</span>
+                        </div>
+                        <span class="time-label">MINUTES</span>
                     </div>
 
                     <div class="time-box">
-                        <span id="seconds">00</span>
-                        <small>Seconds</small>
+                        <div class="number-wrapper">
+                            <span id="seconds">00</span>
+                        </div>
+                        <span class="time-label">SECONDS</span>
                     </div>
 
                 </div>
 
-                <div id="message" class="message" aria-live="polite">
+                <div class="progress-area">
+
+                    <div class="progress-info">
+                        <span>TIME REMAINING</span>
+                        <span id="progress-text">Countdown active</span>
+                    </div>
+
+                    <div class="progress-track">
+                        <div class="progress-bar" id="progress-bar"></div>
+                    </div>
+
+                </div>
+
+                <div
+                    id="message"
+                    class="message"
+                    aria-live="polite">
+                    <span class="message-icon">●</span>
                     Countdown is running...
                 </div>
 
             </div>
 
+            <div class="info-grid">
+
+                <div class="info-item">
+                    <span class="info-icon">⌁</span>
+                    <div>
+                        <strong>Live Updates</strong>
+                        <small>Updates every second</small>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-icon">◷</span>
+                    <div>
+                        <strong>Accurate Timing</strong>
+                        <small>JavaScript Date API</small>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-icon">↗</span>
+                    <div>
+                        <strong>Responsive</strong>
+                        <small>Desktop to mobile</small>
+                    </div>
+                </div>
+
+            </div>
+
             <footer class="footer">
-                <p>HTML5 • CSS3 • JavaScript</p>
+
+                <div class="footer-line"></div>
+
+                <p>
+                    Built with
+                    <strong>HTML5</strong>
+                    •
+                    <strong>CSS3</strong>
+                    •
+                    <strong>JavaScript</strong>
+                </p>
+
+                <span>Veda Technology Internship</span>
+
             </footer>
 
         </section>
