@@ -1,0 +1,979 @@
+/* =========================================
+   VEDA TECHNOLOGY
+   TASK 13 - COUNTDOWN TIMER
+   HTML5 + CSS3 + JAVASCRIPT
+   ========================================= */
+
+
+/* ---------- RESET ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ---------- VARIABLES ---------- */
+
+:root {
+
+    --background: #070a12;
+
+    --background-two: #0d1220;
+
+    --card: rgba(18, 24, 39, 0.82);
+
+    --card-light: rgba(255, 255, 255, 0.045);
+
+    --text: #f8fafc;
+
+    --muted: #94a3b8;
+
+    --border: rgba(255, 255, 255, 0.10);
+
+    --purple: #7c6cff;
+
+    --purple-light: #aaa3ff;
+
+    --purple-dark: #5548d1;
+
+    --green: #35d39a;
+
+    --orange: #f59e0b;
+
+    --shadow:
+        0 30px 80px rgba(0, 0, 0, 0.40);
+}
+
+
+/* ---------- BODY ---------- */
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: var(--text);
+
+    background:
+
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(124, 108, 255, 0.18),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 90% 90%,
+            rgba(84, 72, 209, 0.14),
+            transparent 28%
+        ),
+
+        linear-gradient(
+            135deg,
+            var(--background),
+            var(--background-two)
+        );
+
+    overflow-x: hidden;
+}
+
+
+/* ---------- PAGE ---------- */
+
+.page {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 70px 20px;
+}
+
+
+/* ---------- CONTAINER ---------- */
+
+.container {
+
+    width: 100%;
+
+    max-width: 1050px;
+
+    margin: auto;
+}
+
+
+/* ---------- HERO ---------- */
+
+.hero {
+
+    max-width: 750px;
+
+    margin: 0 auto 45px;
+
+    text-align: center;
+}
+
+
+/* ---------- BRAND ---------- */
+
+.brand {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 24px;
+
+    color: #cbd5e1;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+.brand-dot {
+
+    width: 7px;
+
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: var(--purple);
+
+    box-shadow:
+        0 0 14px rgba(124, 108, 255, 0.9);
+}
+
+
+/* ---------- EYEBROW ---------- */
+
+.eyebrow {
+
+    margin-bottom: 16px;
+
+    color: var(--purple-light);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+/* ---------- HEADING ---------- */
+
+.hero h1 {
+
+    margin-bottom: 18px;
+
+    font-size:
+        clamp(44px, 7vw, 78px);
+
+    line-height: 0.98;
+
+    letter-spacing: -4px;
+
+    font-weight: 800;
+}
+
+
+.hero h1 span {
+
+    display: inline-block;
+
+    color: var(--purple-light);
+}
+
+
+/* ---------- SUBTITLE ---------- */
+
+.subtitle {
+
+    max-width: 620px;
+
+    margin: auto;
+
+    color: var(--muted);
+
+    font-size: 16px;
+
+    line-height: 1.7;
+}
+
+
+/* ---------- TIMER CARD ---------- */
+
+.timer-card {
+
+    position: relative;
+
+    padding: 42px;
+
+    background: var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 28px;
+
+    box-shadow: var(--shadow);
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+
+    overflow: hidden;
+}
+
+
+/* TOP GLOW */
+
+.timer-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 12%;
+
+    right: 12%;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--purple),
+            transparent
+        );
+}
+
+
+/* ---------- CARD HEADER ---------- */
+
+.card-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+/* ---------- LABEL ---------- */
+
+.label {
+
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: var(--purple-light);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.8px;
+}
+
+
+/* ---------- TARGET DATE ---------- */
+
+.target-info h2 {
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    color: var(--text);
+}
+
+
+/* ---------- STATUS ---------- */
+
+.status {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 9px 14px;
+
+    border:
+        1px solid rgba(53, 211, 154, 0.22);
+
+    border-radius: 50px;
+
+    background:
+        rgba(53, 211, 154, 0.08);
+
+    color: var(--green);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+.status-dot {
+
+    width: 6px;
+
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: var(--green);
+
+    box-shadow:
+        0 0 10px rgba(53, 211, 154, 0.9);
+
+    animation: pulse 1.5s infinite;
+}
+
+
+/* ---------- DIVIDER ---------- */
+
+.divider {
+
+    width: 100%;
+
+    height: 1px;
+
+    margin: 28px 0;
+
+    background: var(--border);
+}
+
+
+/* ---------- TIMER GRID ---------- */
+
+.timer-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 16px;
+}
+
+
+/* ---------- TIME BOX ---------- */
+
+.time-box {
+
+    padding: 26px 12px;
+
+    text-align: center;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 20px;
+
+    background: var(--card-light);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* HOVER */
+
+.time-box:hover {
+
+    transform: translateY(-7px);
+
+    border-color:
+        rgba(124, 108, 255, 0.5);
+
+    background:
+        rgba(124, 108, 255, 0.09);
+
+    box-shadow:
+        0 18px 35px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ---------- NUMBER ---------- */
+
+.number {
+
+    min-height: 65px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.number span {
+
+    color: #ffffff;
+
+    font-size:
+        clamp(42px, 6vw, 62px);
+
+    font-weight: 800;
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+
+    text-shadow:
+        0 0 25px rgba(124, 108, 255, 0.22);
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+.time-box:hover .number span {
+
+    transform: scale(1.05);
+}
+
+
+/* ---------- LABEL ---------- */
+
+.time-label {
+
+    display: block;
+
+    margin-top: 13px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* ---------- PROGRESS ---------- */
+
+.progress-section {
+
+    margin-top: 30px;
+}
+
+
+.progress-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 10px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+}
+
+
+/* ---------- PROGRESS TRACK ---------- */
+
+.progress-track {
+
+    width: 100%;
+
+    height: 6px;
+
+    border-radius: 50px;
+
+    overflow: hidden;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+}
+
+
+/* ---------- PROGRESS BAR ---------- */
+
+.progress-bar {
+
+    width: 100%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--purple-dark),
+            var(--purple-light)
+        );
+
+    transition:
+        width 1s linear;
+}
+
+
+/* ---------- MESSAGE ---------- */
+
+.message {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    margin-top: 25px;
+
+    padding: 14px 18px;
+
+    border:
+        1px solid rgba(124, 108, 255, 0.17);
+
+    border-radius: 12px;
+
+    background:
+        rgba(124, 108, 255, 0.06);
+
+    color: #c4beff;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+/* MESSAGE DOT */
+
+.message-dot {
+
+    width: 7px;
+
+    height: 7px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: var(--green);
+
+    box-shadow:
+        0 0 9px rgba(53, 211, 154, 0.8);
+
+    animation: pulse 1.5s infinite;
+}
+
+
+/* ---------- COMPLETED STATE ---------- */
+
+.message.completed {
+
+    border-color:
+        rgba(245, 158, 11, 0.25);
+
+    background:
+        rgba(245, 158, 11, 0.07);
+
+    color: #fbbf24;
+}
+
+
+.message.completed .message-dot {
+
+    background: var(--orange);
+
+    box-shadow: none;
+
+    animation: none;
+}
+
+
+/* ---------- FEATURES ---------- */
+
+.features {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-top: 18px;
+}
+
+
+/* ---------- FEATURE ---------- */
+
+.feature {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 17px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 15px;
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.feature:hover {
+
+    transform: translateY(-3px);
+
+    background:
+        rgba(255, 255, 255, 0.045);
+}
+
+
+/* ---------- FEATURE ICON ---------- */
+
+.feature-icon {
+
+    width: 36px;
+
+    height: 36px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background:
+        rgba(124, 108, 255, 0.10);
+
+    color: var(--purple-light);
+
+    font-size: 18px;
+}
+
+
+/* ---------- FEATURE TEXT ---------- */
+
+.feature strong {
+
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-size: 12px;
+}
+
+
+.feature small {
+
+    color: var(--muted);
+
+    font-size: 10px;
+}
+
+
+/* ---------- FOOTER ---------- */
+
+.footer {
+
+    margin-top: 35px;
+
+    text-align: center;
+}
+
+
+.footer-line {
+
+    width: 45px;
+
+    height: 2px;
+
+    margin:
+        0 auto 16px;
+
+    border-radius: 50px;
+
+    background: var(--purple);
+}
+
+
+.footer p {
+
+    margin-bottom: 8px;
+
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+
+.footer strong {
+
+    color: #94a3b8;
+}
+
+
+.footer > span {
+
+    color: #475569;
+
+    font-size: 10px;
+}
+
+
+/* ---------- ANIMATION ---------- */
+
+@keyframes pulse {
+
+    0%,
+    100% {
+
+        opacity: 1;
+
+        transform: scale(1);
+    }
+
+    50% {
+
+        opacity: 0.4;
+
+        transform: scale(0.75);
+    }
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 800px) {
+
+    .page {
+
+        padding:
+            55px 18px;
+    }
+
+
+    .timer-card {
+
+        padding:
+            32px 25px;
+    }
+
+
+    .timer-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .page {
+
+        padding:
+            42px 14px;
+    }
+
+
+    .hero {
+
+        margin-bottom: 32px;
+    }
+
+
+    .brand {
+
+        margin-bottom: 20px;
+    }
+
+
+    .hero h1 {
+
+        font-size: 45px;
+
+        letter-spacing: -2px;
+    }
+
+
+    .subtitle {
+
+        font-size: 14px;
+    }
+
+
+    .timer-card {
+
+        padding:
+            27px 17px;
+
+        border-radius: 22px;
+    }
+
+
+    .card-header {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .status {
+
+        align-self: flex-start;
+    }
+
+
+    .target-info h2 {
+
+        font-size: 17px;
+    }
+
+
+    .timer-grid {
+
+        gap: 10px;
+    }
+
+
+    .time-box {
+
+        padding:
+            23px 8px;
+
+        border-radius: 16px;
+    }
+
+
+    .number {
+
+        min-height: 50px;
+    }
+
+
+    .number span {
+
+        font-size: 39px;
+    }
+
+
+    .time-label {
+
+        font-size: 8px;
+
+        letter-spacing: 1px;
+    }
+
+
+    .progress-header {
+
+        font-size: 9px;
+    }
+
+
+    .features {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .feature {
+
+        padding: 14px;
+    }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+   ========================================= */
+
+@media (max-width: 380px) {
+
+    .hero h1 {
+
+        font-size: 39px;
+    }
+
+
+    .number span {
+
+        font-size: 34px;
+    }
+
+
+    .timer-card {
+
+        padding:
+            24px 14px;
+    }
+}
