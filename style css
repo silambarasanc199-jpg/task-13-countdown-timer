@@ -1,6 +1,6 @@
 /* =========================================
    VEDA TECHNOLOGY - TASK 13
-   COUNTDOWN TIMER
+   PREMIUM COUNTDOWN TIMER
    HTML5 + CSS3 + JAVASCRIPT
    ========================================= */
 
@@ -11,217 +11,639 @@
 }
 
 :root {
-    --background: #f4f7fb;
-    --card: #ffffff;
-    --text: #172033;
-    --muted: #697386;
-    --border: #e3e8f0;
-    --accent: #635bff;
-    --accent-dark: #5148d8;
+    --bg-main: #080b14;
+    --bg-secondary: #101522;
+    --card: rgba(20, 25, 40, 0.78);
+    --card-light: rgba(255, 255, 255, 0.045);
+
+    --text: #f8fafc;
+    --muted: #94a3b8;
+    --border: rgba(255, 255, 255, 0.10);
+
+    --accent: #7c6cff;
+    --accent-light: #a49cff;
+    --accent-dark: #5146c9;
+
+    --success: #35d39a;
     --white: #ffffff;
-    --shadow: 0 20px 50px rgba(31, 41, 55, 0.10);
+
+    --shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
     min-height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
+    color: var(--text);
+
     background:
         radial-gradient(
-            circle at top left,
-            #eef0ff 0%,
-            transparent 38%
+            circle at 15% 10%,
+            rgba(124, 108, 255, 0.18),
+            transparent 30%
         ),
-        var(--background);
-    color: var(--text);
+        radial-gradient(
+            circle at 85% 85%,
+            rgba(80, 70, 200, 0.15),
+            transparent 28%
+        ),
+        linear-gradient(
+            135deg,
+            var(--bg-main),
+            var(--bg-secondary)
+        );
 }
+
+/* ---------- Page ---------- */
 
 .page {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 60px 20px;
+
+    padding: 70px 20px;
 }
+
+/* ---------- Main Section ---------- */
 
 .countdown-section {
     width: 100%;
-    max-width: 1000px;
+    max-width: 1050px;
 }
 
+/* ---------- Hero ---------- */
+
 .hero {
-    max-width: 700px;
+    max-width: 720px;
     margin: 0 auto 45px;
     text-align: center;
 }
 
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    margin-bottom: 25px;
+
+    color: #cbd5e1;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.brand-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+    background: var(--accent);
+
+    box-shadow:
+        0 0 12px rgba(124, 108, 255, 0.8);
+}
+
 .eyebrow {
-    margin-bottom: 14px;
-    color: var(--accent);
-    font-size: 12px;
+    margin-bottom: 15px;
+
+    color: var(--accent-light);
+
+    font-size: 11px;
     font-weight: 800;
     letter-spacing: 2px;
 }
 
 .hero h1 {
-    margin-bottom: 16px;
-    font-size: clamp(38px, 6vw, 64px);
-    line-height: 1.05;
-    letter-spacing: -2px;
+    margin-bottom: 18px;
+
+    font-size: clamp(44px, 7vw, 76px);
+    line-height: 0.98;
+    letter-spacing: -3px;
+}
+
+.hero h1 span {
+    display: inline-block;
+    color: var(--accent-light);
 }
 
 .subtitle {
+    max-width: 620px;
+    margin: 0 auto;
+
     color: var(--muted);
-    font-size: 17px;
+
+    font-size: 16px;
     line-height: 1.7;
 }
 
+/* ---------- Timer Card ---------- */
+
 .timer-card {
     position: relative;
-    padding: 45px 40px;
+
+    padding: 42px;
+
     background: var(--card);
+
     border: 1px solid var(--border);
-    border-radius: 26px;
+    border-radius: 28px;
+
     box-shadow: var(--shadow);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    overflow: hidden;
 }
 
-.target-info {
-    margin-bottom: 35px;
-    text-align: center;
+.timer-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 12%;
+    right: 12%;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--accent),
+            transparent
+        );
 }
 
-.target-label {
+/* ---------- Card Top ---------- */
+
+.card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.section-label {
     display: block;
-    margin-bottom: 10px;
-    color: var(--accent);
-    font-size: 11px;
+
+    margin-bottom: 9px;
+
+    color: var(--accent-light);
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+}
+
+.card-top h2 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* ---------- Status ---------- */
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 13px;
+
+    border: 1px solid rgba(53, 211, 154, 0.20);
+    border-radius: 50px;
+
+    background: rgba(53, 211, 154, 0.08);
+
+    color: var(--success);
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: var(--success);
+
+    box-shadow:
+        0 0 10px rgba(53, 211, 154, 0.9);
+
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.45;
+        transform: scale(0.75);
+    }
+}
+
+/* ---------- Divider ---------- */
+
+.divider {
+    height: 1px;
+
+    margin: 28px 0;
+
+    background: var(--border);
+}
+
+/* ---------- Timer Grid ---------- */
+
+.timer-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 16px;
+}
+
+/* ---------- Time Box ---------- */
+
+.time-box {
+    padding: 25px 12px;
+
+    text-align: center;
+
+    border: 1px solid var(--border);
+    border-radius: 20px;
+
+    background: var(--card-light);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.time-box:hover {
+    transform: translateY(-6px);
+
+    border-color:
+        rgba(124, 108, 255, 0.45);
+
+    background:
+        rgba(124, 108, 255, 0.08);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.22);
+}
+
+/* ---------- Number ---------- */
+
+.number-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 65px;
+}
+
+.number-wrapper span {
+    color: var(--white);
+
+    font-size: clamp(42px, 6vw, 60px);
+    font-weight: 800;
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+
+    text-shadow:
+        0 0 25px rgba(124, 108, 255, 0.22);
+
+    transition:
+        transform 0.2s ease;
+}
+
+.time-box:hover .number-wrapper span {
+    transform: scale(1.04);
+}
+
+.time-label {
+    display: block;
+
+    margin-top: 13px;
+
+    color: var(--muted);
+
+    font-size: 10px;
     font-weight: 800;
     letter-spacing: 1.5px;
 }
 
-.target-info h2 {
-    color: var(--text);
-    font-size: 21px;
+/* ---------- Progress ---------- */
+
+.progress-area {
+    margin-top: 30px;
 }
 
-.timer-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-}
+.progress-info {
+    display: flex;
+    justify-content: space-between;
 
-.time-box {
-    padding: 30px 15px;
-    text-align: center;
-    background: #f8f9fd;
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        border-color 0.25s ease;
-}
+    margin-bottom: 9px;
 
-.time-box:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent);
-    box-shadow: 0 12px 25px rgba(31, 41, 55, 0.10);
-}
-
-.time-box span {
-    display: block;
-    margin-bottom: 10px;
-    color: var(--accent);
-    font-size: clamp(38px, 6vw, 58px);
-    font-weight: 800;
-    line-height: 1;
-    letter-spacing: -2px;
-}
-
-.time-box small {
     color: var(--muted);
-    font-size: 12px;
+
+    font-size: 10px;
     font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    letter-spacing: 0.8px;
 }
+
+.progress-track {
+    width: 100%;
+    height: 5px;
+
+    overflow: hidden;
+
+    border-radius: 50px;
+
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--accent-dark),
+            var(--accent-light)
+        );
+
+    transition: width 1s linear;
+}
+
+/* ---------- Message ---------- */
 
 .message {
-    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    margin-top: 25px;
     padding: 13px 18px;
-    border-radius: 10px;
-    background: #f1f0ff;
-    color: var(--accent-dark);
-    text-align: center;
-    font-size: 14px;
+
+    border: 1px solid rgba(124, 108, 255, 0.16);
+    border-radius: 12px;
+
+    background: rgba(124, 108, 255, 0.06);
+
+    color: #c4beff;
+
+    font-size: 13px;
     font-weight: 700;
+}
+
+.message-icon {
+    color: var(--success);
+
+    font-size: 9px;
+
+    animation: pulse 1.5s infinite;
 }
 
 .message.completed {
-    background: #fff4e8;
-    color: #b45309;
+    border-color: rgba(245, 158, 11, 0.20);
+
+    background:
+        rgba(245, 158, 11, 0.07);
+
+    color: #fbbf24;
 }
 
+.message.completed .message-icon {
+    color: #f59e0b;
+    animation: none;
+}
+
+/* ---------- Info Grid ---------- */
+
+.info-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-top: 18px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 17px;
+
+    border: 1px solid var(--border);
+    border-radius: 15px;
+
+    background: rgba(255, 255, 255, 0.025);
+}
+
+.info-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 35px;
+    height: 35px;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    background:
+        rgba(124, 108, 255, 0.10);
+
+    color: var(--accent-light);
+
+    font-size: 18px;
+}
+
+.info-item strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-size: 12px;
+}
+
+.info-item small {
+    color: var(--muted);
+
+    font-size: 10px;
+}
+
+/* ---------- Footer ---------- */
+
 .footer {
-    margin-top: 28px;
+    margin-top: 35px;
+
     text-align: center;
 }
 
-.footer p {
-    color: var(--muted);
-    font-size: 13px;
+.footer-line {
+    width: 45px;
+    height: 2px;
+
+    margin: 0 auto 16px;
+
+    border-radius: 50px;
+
+    background: var(--accent);
 }
 
-@media (max-width: 700px) {
+.footer p {
+    margin-bottom: 8px;
+
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+.footer strong {
+    color: #94a3b8;
+}
+
+.footer > span {
+    color: #475569;
+
+    font-size: 10px;
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 800px) {
 
     .page {
-        padding: 45px 16px;
-    }
-
-    .hero {
-        margin-bottom: 35px;
-    }
-
-    .hero h1 {
-        font-size: 40px;
-    }
-
-    .subtitle {
-        font-size: 15px;
+        padding: 55px 18px;
     }
 
     .timer-card {
-        padding: 32px 20px;
+        padding: 32px 25px;
     }
 
     .timer-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 14px;
-    }
-
-    .time-box {
-        padding: 25px 10px;
-    }
-
-    .time-box span {
-        font-size: 42px;
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 }
 
-@media (max-width: 380px) {
+/* ---------- Mobile ---------- */
+
+@media (max-width: 600px) {
 
     .page {
-        padding: 35px 12px;
+        padding: 42px 14px;
+    }
+
+    .hero {
+        margin-bottom: 32px;
+    }
+
+    .brand {
+        margin-bottom: 20px;
     }
 
     .hero h1 {
+        font-size: 45px;
+        letter-spacing: -2px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .timer-card {
+        padding: 27px 17px;
+        border-radius: 22px;
+    }
+
+    .card-top {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .status {
+        align-self: flex-start;
+    }
+
+    .card-top h2 {
+        font-size: 17px;
+    }
+
+    .timer-grid {
+        gap: 10px;
+    }
+
+    .time-box {
+        padding: 23px 8px;
+        border-radius: 16px;
+    }
+
+    .number-wrapper {
+        min-height: 50px;
+    }
+
+    .number-wrapper span {
+        font-size: 39px;
+    }
+
+    .time-label {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .info-item {
+        padding: 14px;
+    }
+}
+
+/* ---------- Small Mobile ---------- */
+
+@media (max-width: 380px) {
+
+    .hero h1 {
+        font-size: 39px;
+    }
+
+    .number-wrapper span {
         font-size: 34px;
     }
 
     .timer-card {
-        padding: 28px 16px;
-    }
-
-    .time-box span {
-        font-size: 36px;
+        padding: 24px 14px;
     }
 }
