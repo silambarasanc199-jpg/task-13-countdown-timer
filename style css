@@ -1,0 +1,227 @@
+/* =========================================
+   VEDA TECHNOLOGY - TASK 13
+   COUNTDOWN TIMER
+   HTML5 + CSS3 + JAVASCRIPT
+   ========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #f4f7fb;
+    --card: #ffffff;
+    --text: #172033;
+    --muted: #697386;
+    --border: #e3e8f0;
+    --accent: #635bff;
+    --accent-dark: #5148d8;
+    --white: #ffffff;
+    --shadow: 0 20px 50px rgba(31, 41, 55, 0.10);
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(
+            circle at top left,
+            #eef0ff 0%,
+            transparent 38%
+        ),
+        var(--background);
+    color: var(--text);
+}
+
+.page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+}
+
+.countdown-section {
+    width: 100%;
+    max-width: 1000px;
+}
+
+.hero {
+    max-width: 700px;
+    margin: 0 auto 45px;
+    text-align: center;
+}
+
+.eyebrow {
+    margin-bottom: 14px;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    margin-bottom: 16px;
+    font-size: clamp(38px, 6vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -2px;
+}
+
+.subtitle {
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.timer-card {
+    position: relative;
+    padding: 45px 40px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 26px;
+    box-shadow: var(--shadow);
+}
+
+.target-info {
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.target-label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.target-info h2 {
+    color: var(--text);
+    font-size: 21px;
+}
+
+.timer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.time-box {
+    padding: 30px 15px;
+    text-align: center;
+    background: #f8f9fd;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.time-box:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: 0 12px 25px rgba(31, 41, 55, 0.10);
+}
+
+.time-box span {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--accent);
+    font-size: clamp(38px, 6vw, 58px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+.time-box small {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.message {
+    margin-top: 30px;
+    padding: 13px 18px;
+    border-radius: 10px;
+    background: #f1f0ff;
+    color: var(--accent-dark);
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.message.completed {
+    background: #fff4e8;
+    color: #b45309;
+}
+
+.footer {
+    margin-top: 28px;
+    text-align: center;
+}
+
+.footer p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+@media (max-width: 700px) {
+
+    .page {
+        padding: 45px 16px;
+    }
+
+    .hero {
+        margin-bottom: 35px;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .subtitle {
+        font-size: 15px;
+    }
+
+    .timer-card {
+        padding: 32px 20px;
+    }
+
+    .timer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+
+    .time-box {
+        padding: 25px 10px;
+    }
+
+    .time-box span {
+        font-size: 42px;
+    }
+}
+
+@media (max-width: 380px) {
+
+    .page {
+        padding: 35px 12px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .timer-card {
+        padding: 28px 16px;
+    }
+
+    .time-box span {
+        font-size: 36px;
+    }
+}
