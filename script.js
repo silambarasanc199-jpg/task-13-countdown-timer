@@ -1,33 +1,75 @@
 // =========================================
 // VEDA TECHNOLOGY - TASK 13
-// COUNTDOWN TIMER
+// PREMIUM COUNTDOWN TIMER
 // =========================================
 
-// Configure the target date here.
-const targetDate = new Date("December 31, 2026 23:59:59").getTime();
+// Change only this date to configure the countdown.
+const targetDate = new Date(
+    "December 31, 2026 23:59:59"
+).getTime();
 
-const daysElement = document.getElementById("days");
-const hoursElement = document.getElementById("hours");
-const minutesElement = document.getElementById("minutes");
-const secondsElement = document.getElementById("seconds");
-const targetDateElement = document.getElementById("target-date");
-const messageElement = document.getElementById("message");
+const startDate = new Date().getTime();
 
-const formattedTargetDate = new Date(targetDate).toLocaleString(
-    "en-IN",
-    {
-        dateStyle: "long",
-        timeStyle: "short"
-    }
-);
+const daysElement =
+    document.getElementById("days");
 
-targetDateElement.textContent = formattedTargetDate;
+const hoursElement =
+    document.getElementById("hours");
 
+const minutesElement =
+    document.getElementById("minutes");
+
+const secondsElement =
+    document.getElementById("seconds");
+
+const targetDateElement =
+    document.getElementById("target-date");
+
+const messageElement =
+    document.getElementById("message");
+
+const statusText =
+    document.getElementById("status-text");
+
+const progressBar =
+    document.getElementById("progress-bar");
+
+const progressText =
+    document.getElementById("progress-text");
+
+// Display target date
+const formattedTargetDate =
+    new Date(targetDate).toLocaleString(
+        "en-IN",
+        {
+            dateStyle: "long",
+            timeStyle: "short"
+        }
+    );
+
+targetDateElement.textContent =
+    formattedTargetDate;
+
+
+// Format numbers with leading zero
+function formatNumber(number) {
+
+    return String(number).padStart(2, "0");
+
+}
+
+
+// Update countdown
 function updateCountdown() {
 
-    const now = new Date().getTime();
-    const difference = targetDate - now;
+    const now =
+        new Date().getTime();
 
+    const difference =
+        targetDate - now;
+
+
+    // Countdown completed
     if (difference <= 0) {
 
         daysElement.textContent = "00";
@@ -35,42 +77,102 @@ function updateCountdown() {
         minutesElement.textContent = "00";
         secondsElement.textContent = "00";
 
-        messageElement.textContent = "Countdown complete!";
-        messageElement.classList.add("completed");
+        messageElement.innerHTML =
+            '<span class="message-icon">●</span> Countdown complete!';
+
+        messageElement.classList.add(
+            "completed"
+        );
+
+        statusText.textContent =
+            "COMPLETED";
+
+        progressText.textContent =
+            "Target reached";
+
+        progressBar.style.width = "0%";
 
         clearInterval(countdownInterval);
 
         return;
     }
 
-    const days = Math.floor(
-        difference / (1000 * 60 * 60 * 24)
-    );
 
-    const hours = Math.floor(
-        (difference % (1000 * 60 * 60 * 24))
-        / (1000 * 60 * 60)
-    );
+    // Calculate time units
+    const days =
+        Math.floor(
+            difference /
+            (1000 * 60 * 60 * 24)
+        );
 
-    const minutes = Math.floor(
-        (difference % (1000 * 60 * 60))
-        / (1000 * 60)
-    );
+    const hours =
+        Math.floor(
+            (difference %
+                (1000 * 60 * 60 * 24)) /
+            (1000 * 60 * 60)
+        );
 
-    const seconds = Math.floor(
-        (difference % (1000 * 60))
-        / 1000
-    );
+    const minutes =
+        Math.floor(
+            (difference %
+                (1000 * 60 * 60)) /
+            (1000 * 60)
+        );
 
-    daysElement.textContent = String(days).padStart(2, "0");
-    hoursElement.textContent = String(hours).padStart(2, "0");
-    minutesElement.textContent = String(minutes).padStart(2, "0");
-    secondsElement.textContent = String(seconds).padStart(2, "0");
+    const seconds =
+        Math.floor(
+            (difference %
+                (1000 * 60)) /
+            1000
+        );
+
+
+    // Update DOM
+    daysElement.textContent =
+        formatNumber(days);
+
+    hoursElement.textContent =
+        formatNumber(hours);
+
+    minutesElement.textContent =
+        formatNumber(minutes);
+
+    secondsElement.textContent =
+        formatNumber(seconds);
+
+
+    // Progress calculation
+    const totalDuration =
+        targetDate - startDate;
+
+    const elapsed =
+        now - startDate;
+
+    let progress =
+        100 -
+        (elapsed / totalDuration) * 100;
+
+    progress =
+        Math.max(
+            0,
+            Math.min(100, progress)
+        );
+
+    progressBar.style.width =
+        `${progress}%`;
+
+    progressText.textContent =
+        `${Math.round(progress)}% remaining`;
 }
 
+
+// Run immediately
 updateCountdown();
 
-const countdownInterval = setInterval(
-    updateCountdown,
-    1000
-);
+
+// Update every second
+const countdownInterval =
+    setInterval(
+        updateCountdown,
+        1000
+    );
